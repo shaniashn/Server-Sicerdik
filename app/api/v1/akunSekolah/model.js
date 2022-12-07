@@ -24,7 +24,7 @@ let akunSekolahSchema = Schema(
         },
         role: {
             type: String,
-            enum: ['staff', 'kepala_sekolah']
+            enum: ['staff_sekolah', 'kepala_sekolah']
         },
         tempat: {
             type: String,
