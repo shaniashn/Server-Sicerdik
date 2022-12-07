@@ -4,10 +4,6 @@ const { model, Schema } = mongoose;
 
 let akunSekolahSchema = Schema(
     {
-        nama_sekolah: {
-            type: String,
-            required: [true, 'Nama sekolah belum diisi!']
-        },
         email: {
             type: String,
             unique: true,
@@ -30,6 +26,10 @@ let akunSekolahSchema = Schema(
             type: String,
             enum: ['staff', 'kepala_sekolah']
         },
+        tempat: {
+            type: String,
+            required: [true, 'Nama sekolah belum diisi!']
+        },
         statusAkun: {
             type: Boolean,
             default: true
@@ -40,7 +40,7 @@ let akunSekolahSchema = Schema(
     }
 );
 
-akunSekolahSchema.pre('save', async (next) => {
+akunSekolahSchema.pre('save', async function (next) {
     const Akun = this;
     if (Akun.isModified('password')){
         Akun.password = await bcrypt.hash(Akun.password, 12);
@@ -48,7 +48,7 @@ akunSekolahSchema.pre('save', async (next) => {
     next();
 });
 
-akunSekolahSchema.methods.comparePassword = async (canditatePassword) => {
+akunSekolahSchema.methods.comparePassword = async function (canditatePassword) {
     const isMatch = await bcrypt.compare(canditatePassword, this.password);
     return isMatch;
 };
