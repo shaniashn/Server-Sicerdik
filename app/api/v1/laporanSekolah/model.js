@@ -23,12 +23,12 @@ const laporanSekolahSchema = new mongoose.Schema({
         type: String,
         required: [
           true,
-          "upload surat pindah dari sekolah / surat masuk ke sekolah",
+          "Upload surat pindah/surat masuk",
         ],
     },
     surat_ortu: {
       type: String,
-      required: [true, "upload surat permohonan ortu"],
+      required: [true, "Upload surat permohonan ortu"],
     },
     surat_plh: {
       type: String,
