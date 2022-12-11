@@ -12,6 +12,7 @@ const akunRouter = require("./app/api/v1/akun/router");
 const authRouter = require("./app/api/v1/auth/router");
 const laporanRouter = require("./app/api/v1/laporan/router");
 const laporanSekolahRouter = require("./app/api/v1/laporanSekolah/router");
+const uploadedFiles = require("./app/api/v1/uploadSurat/router");
 const v1 = "/api/v1/cms";
 
 app.use(bodyParser.json());
@@ -33,5 +34,6 @@ app.use(v1, akunRouter);
 app.use(v1, authRouter);
 app.use(v1, laporanRouter);
 app.use(v1, laporanSekolahRouter);
+app.use(v1, uploadedFiles);
 
 module.exports = app;
