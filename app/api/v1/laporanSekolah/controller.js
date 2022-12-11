@@ -67,9 +67,9 @@ const createLaporan = async (req, res, next) => {
 const getOneLaporan = async (req, res, next) => {
     try {
       const { id } = req.params;
-      const result = await Laporan.findOne({ _id: id });
+      const result = await LaporanSekolah.findOne({ _id: id });
       if (!result) {
-        console.log("No Laporan with the id ", id);
+        console.log("No Laporan Sekolah with the id ", id);
       }
       res.json({ data: result });
     } catch (error) {
@@ -81,10 +81,10 @@ const ubahStatusVerifikasi = async (req, res, next) => {
     try {
       const { id } = req.params;
   
-      const result = await Laporan.findOne({ _id: id });
+      const result = await LaporanSekolah.findOne({ _id: id });
   
       if (!result) {
-        console.log("No Laporan with the id ", id);
+        console.log("No Laporan Sekolah with the id ", id);
       }
       result.status_verifikasi = !result.status_verifikasi;
       await result.save();
@@ -98,10 +98,10 @@ const kembalikanSuratSaatVerifikasi = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { komentar_verifikasi } = req.body;
-    const result = await Laporan.findOne({ _id: id });
+    const result = await LaporanSekolah.findOne({ _id: id });
 
     if (!result) {
-      console.log("No Laporan with the id ", id);
+      console.log("No Laporan Sekolah with the id ", id);
     }
 
     console.log("komentar : ", komentar_verifikasi);
